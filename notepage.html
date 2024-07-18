@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Notes</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'sans-serif';
+}
+body{
+    background: #F8F4E1;
+}
+.navbar {
+            background-color: rgba(255, 255, 255, 0); /* Background transparan putih */
+            backdrop-filter: blur(10px); /* Efek blur pada latar belakang */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Agar navbar berada di atas konten lain */
+            height: 50px; /* Tinggi navbar */
+            padding: 0 20px; /* Padding kiri dan kanan */
+        }
+
+        .navbar .navbar-brand img {
+            max-width: 60px; /* Ukuran logo */
+            height: auto;
+        }
+
+        .navbar .nav-link {
+            color: #333 !important;
+            font-size: 16px; /* Ukuran font */
+        }
+
+        .navbar .nav-link.active {
+            color: #000 !important; /* Warna link aktif */
+        }
+
+        /* Style untuk Navbar di mobile */
+        @media (max-width: 768px) {
+            .navbar {
+                height: 70px; /* Tinggi navbar untuk mobile */
+                padding: 0 10px; /* Padding kiri dan kanan untuk mobile */
+            }
+
+            .navbar .navbar-brand img {
+                max-width: 50px; /* Ukuran logo untuk mobile */
+            }
+
+            .navbar .nav-link {
+                font-size: 14px; /* Ukuran font untuk mobile */
+            }
+        }
+.wrapper{
+    margin: 50px;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fill, 265px);
+}
+.wrapper li{
+    height: 250px;
+    list-style: none;
+    background: white;
+    border-radius: 10px;
+    padding: 15px 20px 20px;
+}
+
+.add-box, .icon, .bottom-content, 
+.settings .menu li, .popup, header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.add-box{
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+}
+.add-box .icon{
+    height: 78px;
+    width: 78px;
+    color: #9ad8ff;
+    font-size: 40px;
+    border-radius: 50%;
+    justify-content: center;
+    border: 2px dashed #9ad8ff;
+}
+.add-box p{
+    color:#9ad8ff;
+    font-weight: 500px;
+    margin-top: 20px;
+}
+.wrapper .note{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.note p{
+    font-size: 22px;
+    font-weight: 500px;
+}
+.note span{
+    display: block;
+    margin-top: 5px;
+    color: #575757;
+    font-size: 16px;
+}
+.note .bottom-content{
+border-top: 1px solid #ccc;
+padding-top: 10px;
+}
+.bottom-content .span{
+    color: #6d6d6d;
+    font-size: 14px;
+
+}
+.bottom-content .settings{
+    color: #6d6d6d;
+    font-size: 15px;
+    cursor: pointer;
+    
+}
+.settings{
+    position: relative;
+
+}
+.settings .menu{
+    position: absolute;
+    box-shadow: 0 0 6px rgba(0, 102, 255, 0.15);
+    padding: 5px 0;
+    bottom: 0;
+    right: -5px;
+    border-radius: 4px;
+    background: #fff;
+    transform: scale(0);
+    transition: transform 0.2s ease;
+    transform-origin: bottom right;
+}
+.settings.show .menu{
+    transform: scale(1);
+
+}
+.settings .menu li{
+    height: 25px;
+    border-radius: 10;
+    font-size: 16px;
+    cursor: pointer;
+    justify-content: flex-start;
+    padding: 17px 15px;
+}
+.menu li:hover{
+    background: #f5f5f5;
+}
+.menu li i{
+    padding-right: 8px;
+}
+.popup-box{
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    left: 0;
+    background:  rgba(0,0,0,0.4);
+}
+.popup-box .popup{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+.popup-box, .popup-box .popup{
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s ease;
+}
+.popup-box.show, .popup-box.show .popup{
+    opacity: 1;
+    pointer-events: auto;
+}
+.popup .content{
+    background: #fff;
+    border-radius: 10px;
+    width: calc(100% - 15px);
+
+}
+.popup .content header{
+    padding: 15px 2px;
+    border-bottom: 1px solid #ccc;
+}
+.content header p{
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.content header i{
+    color: #8b8989;
+    cursor: pointer;
+    font-size: 23px;
+}
+.content form{
+    margin: 15px 25px 35px;
+}
+.content form .row{
+    margin-bottom: 20px;
+}
+form .row label{
+    display: block;
+    margin-bottom: 6px;
+    font-size: 18px;
+
+}
+.content form :where(input, textarea){
+    width: 100%;
+    border: 1px solid #999;
+    border-radius: 5px;
+    outline: none;
+    height: 50px;
+    padding: 0 15px;
+    font-size: 17px;
+
+}
+.content form textarea{
+    height: 150px;
+    resize: none;
+    padding: 8px 15px;
+}
+.content form button{
+    width: 100%;
+    height: 50px;
+    background: #9ad8ff;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+    </style>
+</head>
+<body>
+ 
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link" href="notepage.html">Notes</a>
+                    <a class="nav-link" href="pagekedua.html">To-do List</a>
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="popup-box ">
+        <div class="popup">
+            <div class="content">
+                <header>
+                   <p>Add New Note</p> 
+                   <i class="uil uil-times"></i>
+                </header>
+                <form action="#">
+                   <div class="row title">
+                    <label>Title</label>
+                    <input type="text">
+                   </div> 
+                   <div class="row description">
+                    <label>Description</label>
+                    <textarea></textarea>
+                </div> 
+                   <button>Add note</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper"> <li class="add-box"> 
+<div class="icon"> <i class="uil uil-plus"></i></div>
+<p>Add new note</p>
+    </li>
+</div>
+<script src="scriptnote.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apalah Cun</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('japan.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            color: white;
+            overflow: hidden; /* Mencegah scroll bar muncul */
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5); /* Untuk membuat konten lebih mudah dibaca dengan overlay hitam transparan */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .typewriter {
+            overflow: hidden; /* Mencegah teks yang lebih panjang melebihi container */
+            border-right: .15em solid white; /* Membuat efek kursor */
+            white-space: nowrap; /* Menghindari wrap teks */
+            margin: 0 auto; /* Menengahkan teks */
+            letter-spacing: .15em; /* Jarak antar huruf */
+            animation: blink-caret .75s step-end infinite; /* Animasi ketik */
+            display: inline-block; /* Agar animasi ketik bekerja */
+            font-family: 'Press Start 2P', cursive; /* Menggunakan font Press Start 2P */
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: white; }
+        }
+
+        button {
+            height: 40px;
+            width: 150px;
+            border-radius: 20px;
+            outline: none; /* Menghilangkan outline */
+            font-family: Monaco, monospace; /* Menggunakan font Monaco */
+        }
+
+        h2 {
+            text-align: left;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .typewriter {
+                font-size: 10px;
+            }
+
+            button {
+                height: 35px;
+                width: 120px;
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .typewriter {
+                font-size: 8px;
+            }
+
+            button {
+                height: 30px;
+                width: 100px;
+                font-size: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <p style="font-family: Monaco, monospace;">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+        <div class="typewriter">
+            <h1></h1>
+        </div>
+        <a href="pagekedua.html">
+            <button>
+                Get Started
+            </button>
+        </a>
+    </div>
+    <script>
+        // Menambahkan JavaScript untuk mesin tik
+        const h1Text = "Welcome Back Username!";
+        const h1 = document.querySelector('.typewriter h1');
+        let index = 0;
+        let typingSpeed = 100; // Kecepatan mengetik (dalam milidetik)
+        let delayAfterTyping = 2000; // Waktu menunggu setelah mengetik selesai (dalam milidetik)
+
+        function typeWriter() {
+            if (index < h1Text.length) {
+                h1.textContent += h1Text.charAt(index);
+                index++;
+                setTimeout(typeWriter, typingSpeed); // Kecepatan mengetik
+            } else {
+                // Setelah mengetik selesai, tunggu sebentar lalu ulangi animasi
+                setTimeout(() => {
+                    h1.textContent = '';
+                    index = 0;
+                    typeWriter();
+                }, delayAfterTyping);
+            }
+        }
+
+        // Mulai animasi mesin tik
+        typeWriter();
+    </script>
+</body>
+</html>

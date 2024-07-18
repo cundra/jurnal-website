@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Kosong</title>
+    <!-- Link ke Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #F8F4E1; /* Mengatur warna latar belakang */
+            overflow: hidden; /* Mencegah scroll bar muncul */
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0); /* Background transparan putih */
+            backdrop-filter: blur(10px); /* Efek blur pada latar belakang */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Agar navbar berada di atas konten lain */
+            height: 50px; /* Tinggi navbar */
+            padding: 0 20px; /* Padding kiri dan kanan */
+        }
+
+        .navbar .navbar-brand img {
+            max-width: 60px; /* Ukuran logo */
+            height: auto;
+        }
+
+        .navbar .nav-link {
+            color: #333 !important;
+            font-size: 16px; /* Ukuran font */
+        }
+
+        .navbar .nav-link.active {
+            color: #000 !important; /* Warna link aktif */
+        }
+
+        /* Style untuk Navbar di mobile */
+        @media (max-width: 768px) {
+            .navbar {
+                height: 70px; /* Tinggi navbar untuk mobile */
+                padding: 0 10px; /* Padding kiri dan kanan untuk mobile */
+            }
+
+            .navbar .navbar-brand img {
+                max-width: 50px; /* Ukuran logo untuk mobile */
+            }
+
+            .navbar .nav-link {
+                font-size: 14px; /* Ukuran font untuk mobile */
+            }
+        }
+        .todo-app{
+            width: 100%;
+            max-width: 540px;
+            background: rgb(255, 255, 255);
+            margin: 100px auto 20px;
+            padding: 40px 30px 70px;
+            border-radius: 10px;
+        }
+        .todo-app h2{
+            color: #002765;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size:20px;
+            font-weight: bold;
+        }
+        .todo-app h2 img{
+            width: 40px;
+            margin-left: 0px;
+        }
+        .row{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #edeef0;
+            border-radius: 30px;
+            padding-left: 20px;
+            margin-bottom: 25px;
+          
+            input{
+            flex: 1;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 10px;
+        }
+        button{
+            outline: none;
+            border: none;
+            padding: 16px 50px;
+            background: #dc67ff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 40px;
+            width: 0px;
+        } 
+        }
+      ul li{
+        list-style: none;
+        font-size: 17px;
+        padding: 12px 8px 12px 50px;
+        user-select: none;
+        cursor: pointer;
+        position: relative;
+      }
+      ul li::before{
+        content: '';
+        position: absolute;
+        height: 28px;
+        width: 28px;
+        border-radius: 50%;
+        background-image: url(unchecked.png);
+        background-size: cover;
+        background-position: center;
+        top: 12px;
+        left: 8px;
+
+      }
+      ul li.checked{
+       color: #555;
+       text-decoration: line-through;  
+      }
+      ul li.checked::before{
+        background-image: url(check.png);
+
+      }
+      ul li span{
+        position: absolute;
+        right: 0;
+        top: 5px;
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+        color: #555;
+        line-height: 40px;
+        text-align: center;
+        border-radius: 50%;
+      }
+      ul li span:hover{
+        background: #edeef0;
+
+      }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link" href="notepage.html">Notes</a>
+                    <a class="nav-link" href="pagekedua.html">To-do List</a>
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="todo-app">
+        <h2>To-Do List <img src="icon.png"></h2>
+        <div class="row">
+            <input type="text" id="input-box" placeholder="Add new task">
+            <button onclick="addTask()">Add</button>
+        </div>
+        <ul id="list-container">
+            <!-- <li class="checked">Task 1</li>
+            <li>Task 2</li>
+            <li>Task 3</li> -->
+        </ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
